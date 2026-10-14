@@ -136,6 +136,10 @@ def check_auth_need() -> bool:
     :return: True if static file else False
     """
 
+    from swingmusic.myaccounts import enabled
+    if enabled() and request.path in ("/healthz", "/auth/myaccounts/login", "/auth/myaccounts/callback"):
+        return True
+
     # INFO: Routes that don't need authentication
     urls = (
         "/auth/login",
@@ -276,7 +280,8 @@ def build() -> OpenAPI:
 
         # INFO: If the request has an Authorization header, don't refresh the jwt
         # Request is probably from the mobile client or a third party
-        if check_auth_need() or request.headers.get("Authorization"):
+        from swingmusic.myaccounts import enabled
+        if enabled() or check_auth_need() or request.headers.get("Authorization"):
             return response
 
         try:
@@ -295,5 +300,8 @@ def build() -> OpenAPI:
     config_jwt(app)
     load_endpoints(app)
     load_plugins(app)
+
+    from swingmusic.myaccounts import install
+    install(app)
 
     return app

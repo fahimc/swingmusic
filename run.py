@@ -2,6 +2,7 @@
 import sys
 import zipfile
 import multiprocessing
+import os
 from pathlib import Path
 import swingmusic.__main__ as app
 
@@ -14,6 +15,7 @@ if __name__ == "__main__":
     # add freeze support here as pyinstaller uses this entry
 
     if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        os.environ["PATH"] = sys._MEIPASS + os.pathsep + os.environ.get("PATH", "")
         # INFO: extract client.zip to sys._MEIPASS
         with zipfile.ZipFile(sys._MEIPASS + "/client.zip", "r") as zip_ref:
             zip_ref.extractall(sys._MEIPASS)

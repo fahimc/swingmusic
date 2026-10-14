@@ -1,4 +1,5 @@
 import threading
+from functools import wraps
 from multiprocessing import Process, Pipe
 
 
@@ -7,6 +8,7 @@ def background(func):
     Runs the decorated function in a background thread.
     """
 
+    @wraps(func)
     def background_func(*a, **kw):
         threading.Thread(target=func, args=a, kwargs=kw).start()
 

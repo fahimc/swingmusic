@@ -73,6 +73,9 @@ def wsgi_loader(target: str):
     # Setup config files and database
     run_setup()
 
+    from swingmusic.myaccounts import prepare_workspace
+    prepare_workspace()
+
     setup_logger(
         app_dir=settings.Paths().config_dir,
         debug=os.environ.get("SWINGMUSIC_DEBUG") == "1",
@@ -90,6 +93,9 @@ def wsgi_loader(target: str):
     # Start background tasks in a daemon thread
     def background_tasks():
         register_plugins()
+        from swingmusic.myaccounts import enabled, scan_music
+        if enabled():
+            threading.Thread(target=scan_music, daemon=True).start()
         setproctitle.setproctitle(proc_title)
         start_cron_jobs()
 
@@ -125,6 +131,11 @@ def start_swingmusic(host: str, port: int):
 
     # docker needs manual flush
     print("", end="", flush=True)
+
+    if os.name == "nt":
+        from waitress import serve
+        serve(wsgi_loader(""), host=host, port=port, threads=16)
+        return
 
     server = Granian(
         target="swingmusic.app_builder:app",  # Placeholder, loader overrides this

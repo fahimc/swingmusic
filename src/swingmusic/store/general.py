@@ -19,6 +19,11 @@ class GeneralStore:
 
     @classmethod
     def load_onboarding_data(cls, users: list[User]):
+        from swingmusic.myaccounts import enabled
+        if enabled():
+            cls.admin_exists = True
+            cls.root_dirs_set = bool(UserConfig().rootDirs)
+            return
         # INFO: Check if there are any users in the db
         if not users:
             cls.admin_exists = False

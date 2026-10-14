@@ -1,6 +1,4 @@
-<img src="src/swingmusic/assets/my_music.svg" alt="My Music" width="80" height="80">
-
-# Swing Music with MyAccounts and Workspace
+# <img src="src/swingmusic/assets/my_music.svg" alt="" width="32" height="32"> Swing Music with MyAccounts and Workspace
 
 This fork runs as its own music server and Windows **Music.exe**, with the same
 player available at Workspace's `/music/` address. Music files stay in the

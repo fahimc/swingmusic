@@ -1,5 +1,6 @@
 """Apply the small prefix/SSO adapter to upstream webclient v3.0.0 before Vite build."""
 from pathlib import Path
+import shutil
 import sys
 
 root = Path(sys.argv[1])
@@ -27,3 +28,19 @@ patch("src/requests/useAxios.ts", "useModal().showLoginModal()", "if (error.resp
 # Scope the installable app to its own directory in both standalone and suite mode.
 patch("vite.config.ts", 'start_url: "/"', 'start_url: "./", scope: "./"')
 patch("vite.config.ts", 'url: "/#/', 'url: "./#/')
+
+assets = Path(__file__).resolve().parents[1] / "src/swingmusic/assets"
+for file in (root / "src/assets/icons/logos").glob("*.svg"):
+    shutil.copyfile(assets / "my_music.svg", file)
+for name in ["logo.svg", "logo-fill.light.svg", "favicon.svg"]:
+    shutil.copyfile(assets / "my_music.svg", root / "public" / name)
+for size in [192, 512]:
+    shutil.copyfile(assets / f"my_music-{size}.png", root / "public" / f"pwa-{size}x{size}.png")
+shutil.copyfile(assets / "logo-fill.light.ico", root / "public/favicon.ico")
+patch("index.html", "<title>Swing Music</title>", '<title>My Music</title><link rel="icon" type="image/svg+xml" href="./favicon.svg">')
+patch("src/components/Logo.vue", "<LogoSvg />", '<img :src="musicLogo" alt="" width="32" height="32" />')
+patch("src/components/Logo.vue", 'import LogoSvg from "@/assets/icons/logos/logo-fill.light.svg";', 'import musicLogo from "@/assets/icons/logos/logo-fill.light.svg?url";')
+for name, size in [("nav/NavBar.vue", 32), ("nav/NavSidenav.vue", 24), ("Onboarding/Welcome.vue", 96)]:
+    patch("src/components/" + name, "<LogoSvg />", f'<img :src="musicLogo" alt="" width="{size}" height="{size}" style="object-fit:contain;flex:none" />')
+    patch("src/components/" + name, "import LogoSvg from '@/assets/icons/logos/logo-fill.light.svg'", "import musicLogo from '@/assets/icons/logos/logo-fill.light.svg?url'")
+patch("src/components/modals/settings/custom/Pairing.vue", "image: '/logo-fill.light.svg'", "image: new URL('./logo-fill.light.svg', window.location.href).href")

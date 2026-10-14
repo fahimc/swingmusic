@@ -12,4 +12,5 @@ a = Analysis([str(root / 'run.py')], pathex=[str(root/'src')], datas=datas,
              excludes=['locust','nuitka','pytest','tkinter','matplotlib','pandas','IPython'],
              noarchive=False)
 pyz = PYZ(a.pure)
-exe = EXE(pyz, a.scripts, a.binaries, a.datas, [], name='Music', console=True, strip=False, upx=False)
+exe = EXE(pyz, a.scripts, a.binaries, a.datas, [], name='Music', console=True, strip=False, upx=False,
+          icon=str(root / 'src/swingmusic/assets/logo-fill.light.ico'))

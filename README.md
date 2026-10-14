@@ -1,7 +1,9 @@
 <div align="center" style="display: flex; justify-content: center; align-items: center;">
-  <img class="lo" src='https://github.com/swingmx/swingmusic/raw/master/.github/images/logo-fill.light.svg' style="height: 4rem">
+  <img src="src/swingmusic/assets/my_music.svg" alt="My Music" width="80" height="80">
 </div>
-<div align="center" style="font-size: 2rem"><b>Swing Music</b></div>
+<div align="center" style="font-size: 2rem"><b>My Music · Swing Music</b></div>
+
+This fork adds MyAccounts sign-in, shared Drive music folders and a portable Windows package for [One Workspace](https://github.com/fahimc/one-workspace). See the [standalone and suite setup guide](WORKSPACE.md). Upstream links and credits follow.
 
 <div align="center">
   <img src="https://img.shields.io/github/v/release/swingmx/swingmusic" alt="Latest GitHub Release" />

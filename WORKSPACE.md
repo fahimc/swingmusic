@@ -1,3 +1,5 @@
+<img src="src/swingmusic/assets/my_music.svg" alt="My Music" width="80" height="80">
+
 # Swing Music with MyAccounts and Workspace
 
 This fork runs as its own music server and Windows **Music.exe**, with the same

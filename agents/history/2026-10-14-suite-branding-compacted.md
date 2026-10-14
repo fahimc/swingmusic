@@ -31,3 +31,8 @@ previous Photos/Studio prerequisite source so the branded app imports build from
 the pushed branch; unrelated preview files and concurrent Workspace Mail changes
 remain excluded. Existing executable releases and live installations are unchanged.
 GitHub Actions is disabled before publication; builds remain local.
+
+Source and main README branding pushed and remote SHA verified on master:
+https://github.com/fahimc/swingmusic/commit/b981af2d795bac4276514a149a572731c4b3baba
+README local image targets verified in the staged Git tree before commit.
+Original EXE release assets unchanged; no Actions build was used.

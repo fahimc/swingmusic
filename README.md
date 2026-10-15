@@ -1,4 +1,8 @@
-# <img src="src/swingmusic/assets/my_music.svg" alt="" width="40" height="40"> My Music
+<p align="center">
+  <img src="src/swingmusic/assets/my_music.svg" alt="My Music logo" width="112" height="112">
+</p>
+
+<h1 align="center">My Music</h1>
 
 Your own music library, powered by Swing Music. Run a standalone player or connect it to One Workspace for MyAccounts sign-in and a shared Music folder visible in Drive.
 

@@ -25,11 +25,12 @@ class User:
             except json.JSONDecodeError:
                 this_dict["roles"] = []
 
+        this_dict["firstname"] = (self.extra or {}).get("firstname", "")
         return this_dict
 
     def todict_simplified(self):
         return {
             "id": self.id,
             "username": self.username,
-            "firstname": self.extra["firstname"] if self.extra else "",
+            "firstname": self.extra.get("firstname", "") if self.extra else "",
         }

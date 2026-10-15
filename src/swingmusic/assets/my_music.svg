@@ -1,34 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="My Music logo">
-  <title>My Music logo</title>
-  <defs>
-    <linearGradient id="edge" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#B559FF"/>
-      <stop offset="1" stop-color="#8038FF"/>
-    </linearGradient>
-    <linearGradient id="letters" x1="125" y1="144" x2="384" y2="350" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#CD8AFF"/>
-      <stop offset="1" stop-color="#8C53FF"/>
-    </linearGradient>
-    <linearGradient id="panel" x1="70" y1="20" x2="445" y2="496" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#150B29"/>
-      <stop offset="1" stop-color="#050A19"/>
-    </linearGradient>
-    <radialGradient id="haze" cx="0" cy="0" r="1" gradientTransform="translate(250 103) rotate(90) scale(370)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#B559FF" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#B559FF" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="rounded"><rect width="512" height="512" rx="76"/></clipPath>
-  </defs>
-  <!-- Canvas outside the rounded square remains fully transparent. -->
-  <g clip-path="url(#rounded)">
-    <rect width="512" height="512" fill="url(#panel)"/>
-    <rect width="512" height="512" fill="url(#haze)"/>
-    <rect x="7" y="7" width="498" height="498" rx="70" stroke="url(#edge)" stroke-width="12" fill="none"/>
-    <rect x="24" y="24" width="464" height="464" rx="55" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2" fill="none"/>
-    <g fill="url(#letters)">
-      <path d="M1307 0V854Q1307 883 1307.5 912.0Q1308 941 1317 1161Q1246 892 1212 786L958 0H748L494 786L387 1161Q399 929 399 854V0H137V1409H532L784 621L806 545L854 356L917 582L1176 1409H1569V0Z" transform="translate(62.500 343) scale(0.113423 -0.113423)"/>
-<path d="M1307 0V854Q1307 883 1307.5 912.0Q1308 941 1317 1161Q1246 892 1212 786L958 0H748L494 786L387 1161Q399 929 399 854V0H137V1409H532L784 621L806 545L854 356L917 582L1176 1409H1569V0Z" transform="translate(256.000 343) scale(0.113423 -0.113423)"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none" role="img" aria-labelledby="music-title">
+<title id="music-title">Music</title>
+<defs>
+<linearGradient id="music-stem" x1="134" y1="67" x2="155" y2="196" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#009D8D"/><stop offset="0.55" stop-color="#16B99E"/><stop offset="1" stop-color="#55DBBC"/></linearGradient>
+<linearGradient id="music-flag" x1="139" y1="16" x2="222" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#91EFDB"/><stop offset="0.5" stop-color="#43CFB2"/><stop offset="1" stop-color="#00A992"/></linearGradient>
+<linearGradient id="music-note-head" x1="53" y1="122" x2="143" y2="228" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7985FF"/><stop offset="0.36" stop-color="#5363F5"/><stop offset="0.73" stop-color="#3736CF"/><stop offset="1" stop-color="#211571"/></linearGradient>
+</defs>
+<rect x="134" y="61" width="22" height="129" rx="0" fill="url(#music-stem)"/>
+<path d="M134 29C134 18 142 12 153 18L213 51C222 56 226 63 226 74V98C226 109 218 113 210 108L151 76C144 72 138 73 134 78Z" fill="url(#music-flag)"/>
+<circle cx="94" cy="178" r="62" fill="url(#music-note-head)"/>
+<path d="M39 150C51 127 73 116 96 117" fill="none" stroke="#CED7FF" stroke-opacity="0.2" stroke-width="1" stroke-linecap="round"/>
 </svg>

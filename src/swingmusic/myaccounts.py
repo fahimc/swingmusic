@@ -120,6 +120,12 @@ def install(app):
             if claims["iss"] != issuer:
                 raise ValueError("Issuer mismatch")
             user = resolve_user(issuer, claims["sub"])
+            name = str(claims.get("displayName") or claims.get("name") or claims.get("preferred_username") or claims.get("email") or "Your account").strip()[:200]
+            extra = {**(user.extra or {}), "firstname": name, "displayName": name}
+            if extra != user.extra:
+                from swingmusic.db.userdata import UserTable
+                UserTable.update_one({"id": user.id, "extra": extra})
+                user.extra = extra
             expiry = min(int(claims["exp"]), int(time.time()) + 8 * 3600)
             response = redirect(prefix + "/")
             jwt = create_access_token(identity=user.todict(), expires_delta=timedelta(seconds=max(1, expiry-int(time.time()))),
@@ -138,8 +144,18 @@ def install(app):
     def workspace_health():
         return {"status": "ok"}
 
+    @app.after_request
+    def workspace_cache_policy(response):
+        if request.path.startswith("/auth/") or request.path in ("/", "/sw.js", "/registerSW.js"):
+            response.headers["Cache-Control"] = "no-store"
+        return response
+
     @app.before_request
     def workspace_guard():
+        # Packaged UI assets contain no user data. Keep them available while
+        # signed out so the browser can update its service worker before login.
+        if request.method in ("GET", "HEAD") and request.endpoint == "serve_client_files":
+            return
         if request.path in ("/healthz", "/auth/myaccounts/login", "/auth/myaccounts/callback"):
             return
         if request.method not in ("GET", "HEAD", "OPTIONS") and request.headers.get("Origin") != origin:

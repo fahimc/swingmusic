@@ -235,3 +235,6 @@ zope-event==6.1
     # via gevent
 zope-interface==8.3
     # via gevent
+
+audioop-lts==0.2.2 ; python_full_version >= "3.13"
+    # via swingmusic (Python audio compatibility)

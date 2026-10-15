@@ -2,7 +2,7 @@
 
 Your own music library, powered by Swing Music. Run a standalone player or connect it to One Workspace for MyAccounts sign-in and a shared Music folder visible in Drive.
 
-[Download Windows preview](https://github.com/fahimc/swingmusic/releases/tag/workspace-20261014) · [Standalone and suite setup](WORKSPACE.md) · [One Workspace](https://github.com/fahimc/one-workspace) · [Upstream Swing Music](https://github.com/swingmx/swingmusic)
+[Download Windows preview](https://github.com/oneworkspacestudio/Music/releases) · [Standalone and suite setup](WORKSPACE.md) · [One Workspace](https://github.com/oneworkspacestudio/one-workspace) · [Upstream Swing Music](https://github.com/swingmx/swingmusic)
 
 ![Swing Music artist view showing an album library and playback controls](.github/images/artist.webp)
 
@@ -18,13 +18,13 @@ Your own music library, powered by Swing Music. Run a standalone player or conne
 
 ## Install with One Workspace
 
-Use the [Git and Music installer](https://github.com/fahimc/one-workspace/releases/tag/v0.2.0-gitmusic-preview.3). The suite registers the Music OIDC client, creates the shared `Music` folder and opens the player at `/music/`.
+Use the [Git and Music installer](https://github.com/oneworkspacestudio/one-workspace/releases). The suite registers the Music OIDC client, creates the shared `Music` folder and opens the player at `/music/`.
 
 Changes to the shared Music folder are rescanned about every 15 seconds. All permitted Music users share that library; Drive folder scopes do not become per-track Music permissions automatically. See the [storage and identity details](WORKSPACE.md).
 
 ## Run independently
 
-Download `Music.exe` from this fork's [Windows preview](https://github.com/fahimc/swingmusic/releases/tag/workspace-20261014), then start it with a private configuration folder:
+Download `Music.exe` from this fork's [Windows preview](https://github.com/oneworkspacestudio/Music/releases), then start it with a private configuration folder:
 
 ```powershell
 .\Music.exe --host 127.0.0.1 --port 1970 --config 'D:\Private\MyMusic'

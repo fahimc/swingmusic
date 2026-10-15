@@ -11,6 +11,7 @@ dynamic = ["version"]
 
 dependencies = [
     "Authlib==1.6.5",
+    "audioop-lts==0.2.2; python_version >= '3.13'",
     "pillow>=11.1.0",
     "Flask>=3.1.0",
     "Flask-Cors>=3.0.10",
